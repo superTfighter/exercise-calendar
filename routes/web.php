@@ -20,7 +20,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/home', [Controllers\HomeController::class, 'index'])->name('home');
 
-    Route::get('/timetable', [Controllers\TimetableController::class, 'getTimetables'])->name('timetables');
+    Route::get('/timetables', [Controllers\TimetableController::class, 'getTimetables'])->name('timetables');
     Route::post('/timetable/create', [Controllers\TimetableController::class, 'createTimetable'])->name('timetable.create');
 
     Route::post('/sign-out', [Controllers\Auth\SessionController::class, 'destroy'])->name('auth.logout');

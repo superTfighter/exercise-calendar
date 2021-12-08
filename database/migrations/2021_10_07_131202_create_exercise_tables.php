@@ -16,8 +16,9 @@ class CreateExerciseTables extends Migration
         Schema::create('exercises', function (Blueprint $table) {
             $table->id();
             $table->string('name', 200);
+            $table->string('link', 2000);
             $table->text('description');
-            $table->foreignId('exercise_type_id');
+            $table->foreignId('exercise_type_id')->nullable();
             $table->timestamps();
         });
 
@@ -37,6 +38,6 @@ class CreateExerciseTables extends Migration
     public function down()
     {
         Schema::dropIfExists('exercises');
-        Schema::dropIfExists('exercise_type');
+        Schema::dropIfExists('exercise_types');
     }
 }

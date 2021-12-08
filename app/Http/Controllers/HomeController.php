@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ExerciseType;
+use App\Models\Exercise;
 use Auth;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+
+    public function test()
+    {
+      
+    }
+
     public function index()
     {
         $user = Auth::user();

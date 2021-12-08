@@ -13,6 +13,11 @@ class Day extends Model
 
     public $fillable = ['dayofweek', 'timetable_id'];
 
+    public function timetable()
+    {
+        return $this->belongsTo(Timetable::class);
+    }
+
     public function exercise_types()
     {
         return $this->belongsToMany(ExerciseType::class, 'day_excersise_type');

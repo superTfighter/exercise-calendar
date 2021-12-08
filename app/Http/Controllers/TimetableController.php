@@ -8,6 +8,7 @@ use App\Models\Timetable;
 use Illuminate\Http\Request;
 use App\Http\Requests\TimetablePostRequest;
 use App\Models\ExerciseType;
+use App\Models\Day;
 
 class TimetableController extends Controller
 {
@@ -31,15 +32,29 @@ class TimetableController extends Controller
 
     public function editTimetable(Timetable $timetable)
     {   
-        $exercise_types = ExerciseType::All();
+        $days = Day::All();
         
-        return view('timetable.edit')->with(compact('timetable','exercise_types'));
+        return view('timetable.edit')->with(compact('timetable','days'));
     }
 
     public function updateTimetable(TimetablePostRequest $request, Timetable $timetable)
     {
+        $timetable->update($request->except('_token'));
 
+        return redirect()->route('timetables');
     }
 
+    public function addDayToTimetable(Request $request, Timetable $timetable)
+    {
+
+        $days = $request['days'];
+
+        foreach ($days as $day) {
+
+            $day = Day::where('id',$day)->first()->timetable()->associate($timetable)->save(); 
+        }
+
+        return redirect()->route('timetables');
+    }
 
 }

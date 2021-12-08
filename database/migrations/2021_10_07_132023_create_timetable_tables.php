@@ -23,7 +23,7 @@ class CreateTimetableTables extends Migration
         Schema::create('days', function (Blueprint $table) {
             $table->id();
             $table->enum('dayofweek', ['Hétfő', 'Kedd', 'Szerda', 'Csütörtök', 'Péntek', 'Szombat', 'Vasárnap']);
-            $table->foreignId('timetable_id');
+            $table->foreignId('timetable_id')->nullable();
             $table->timestamps();
         });
 
@@ -43,8 +43,8 @@ class CreateTimetableTables extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('timetable');
-        Schema::dropIfExists('day');
-        Schema::dropIfExists('day_excersise_type');
+        Schema::dropIfExists('timetables');
+        Schema::dropIfExists('days');
+        Schema::dropIfExists('day_excersise_types');
     }
 }

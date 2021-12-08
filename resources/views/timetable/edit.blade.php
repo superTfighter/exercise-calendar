@@ -46,6 +46,50 @@
             </div>
 
         </div>
+
+
+        <div class="col-12 col-md-8 col-xl-5 mx-auto">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h4>
+                       Days in this timetable
+                    </h4>
+                    <div>
+
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">User Name</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach ($timetable->days()->get() as $day)
+                                        <tr>
+                                            <th scope="row">{{ $day->id }}</th>
+                                            <td>{{ $day->dayofweek }}</td>
+                                            <td>{{ $timetable->exercise_types }}</td>
+                                            <td> <a class="btn btn-primary" href="{{ route('timetable.edit', $timetable) }}">
+                                                    Edit
+                                                </a>/delete</td>
+                                        </tr>
+                                    @endforeach
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
     </div>
 
     <div class="row">
@@ -68,13 +112,27 @@
                             @endif
 
 
-                            <select multiple="multiple" id="my-select" name="my-select[]">
-                                <option value='elem_1'>elem 1</option>
-                                <option value='elem_2'>elem 2</option>
-                                <option value='elem_3'>elem 3</option>
-                                <option value='elem_4'>elem 4</option>
-                                <option value='elem_100'>elem 100</option>
-                            </select>
+                            <form action="{{ route('timetable.add.day', $timetable) }}" method="POST">
+                                @csrf
+
+
+                                <select multiple="multiple" id="my-select" name="days[]">
+
+                                    @foreach ($days as $day)
+
+                                        <option value='{{ $day->id }}'>{{ $day->dayofweek }}</option>
+
+
+                                    @endforeach
+                                </select>
+
+
+                                <div class="d-grid">
+                                    <button class="btn btn-success btn-lg">
+                                        Save
+                                    </button>
+                                </div>
+                            </form>
 
 
 

@@ -9,8 +9,7 @@ class Exercise extends Model
 {
     use HasFactory;
 
-    public $fillable = ['name', 'description', 'exercise_type_id'];
-
+    public $fillable = ['name', 'link', 'description', 'exercise_type_id'];
 
     public function exercise_type()
     {

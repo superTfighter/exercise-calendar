@@ -9,6 +9,10 @@
             <a class="nav-link" href="{{ route('timetables')}}">Timetables</a>
         </li>
 
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('days')}}">Days</a>
+        </li>
+
         <form action="{{ route('auth.logout') }}" method="POST">
             @csrf
             <button class="nav-link" type="submit">

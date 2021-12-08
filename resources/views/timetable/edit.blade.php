@@ -73,9 +73,9 @@
                                             <th scope="row">{{ $day->id }}</th>
                                             <td>{{ $day->dayofweek }}</td>
                                             <td>{{ $timetable->exercise_types }}</td>
-                                            <td> <a class="btn btn-primary" href="{{ route('timetable.edit', $timetable) }}">
-                                                    Edit
-                                                </a>/delete</td>
+                                            <td> <a class="btn btn-primary" href="{{ route('day.edit', $day) }}">
+                                                Edit
+                                            </a>/delete</td>
                                         </tr>
                                     @endforeach
 

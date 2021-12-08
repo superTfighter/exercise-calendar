@@ -29,7 +29,7 @@ class CreateTimetableTables extends Migration
 
         Schema::create('day_excersise_types', function (Blueprint $table) {
             $table->foreignId('day_id');
-            $table->foreignId('excersise_type_id');
+            $table->foreignId('exercise_type_id');
             $table->timestamps();
 
         });

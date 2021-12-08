@@ -14,7 +14,7 @@
             <div class="card">
                 <div class="card-header text-center">
                     <h4>
-                        Timetables
+                        Days
                     </h4>
                     <div>
                         <div class="card-body">
@@ -23,31 +23,18 @@
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Name</th>
-                                        <th scope="col">User Name</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
-                                    @foreach ($timetables as $timetable)
+                                    @foreach ($days as $day)
                                         <tr>
-                                            <th scope="row">{{ $timetable->id }}</th>
-                                            <td>{{ $timetable->name }}</td>
-                                            <td>{{ $timetable->user->name }}</td>
-                                            <td>
-
-                                                <a class="btn btn-primary"
-                                                    href="{{ route('timetable.edit', $timetable) }}">
+                                            <th scope="row">{{ $day->id }}</th>
+                                            <td>{{ $day->dayofweek }}</td>
+                                            <td> <a class="btn btn-primary" href="{{ route('day.edit', $day) }}">
                                                     Edit
-                                                </a>
-
-                                                <a class="btn btn-success"
-                                                    href="{{ route('timetable.view', $timetable) }}">
-                                                    View
-                                                </a>
-
-                                                /delete
-                                            </td>
+                                                </a>/delete</td>
                                         </tr>
                                     @endforeach
 
@@ -70,7 +57,7 @@
             <div class="card">
                 <div class="card-header text-center">
                     <h4>
-                        Create a new timetable
+                        Create a new day
                     </h4>
                     <div>
 
@@ -83,11 +70,22 @@
                                     @endforeach
                                 </div>
                             @endif
-                            <form action="{{ route('timetable.create') }}" method="POST">
+                            <form action="{{ route('day.create') }}" method="POST">
                                 @csrf
                                 <div class="mb-3">
-                                    <label for="name">Timetable name</label>
-                                    <input type="text" class="form-control" name="name">
+                                    <select name="dayofweek" class="form-select" aria-label="Default select example">
+
+                                        <option selected>Please select one day</option>
+                                        
+                                        
+                                        @foreach ($daysofweek as $dayofweek)
+
+                                            <option value={{ $dayofweek }}>{{ $dayofweek }}</option>
+
+                                        @endforeach
+
+
+                                    </select>
                                 </div>
 
                                 <div class="d-grid">

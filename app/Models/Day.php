@@ -20,7 +20,7 @@ class Day extends Model
 
     public function exercise_types()
     {
-        return $this->belongsToMany(ExerciseType::class, 'day_excersise_type');
+        return $this->belongsToMany(ExerciseType::class, 'day_excersise_types');
     }
 
 }

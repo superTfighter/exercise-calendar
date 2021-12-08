@@ -17,7 +17,7 @@ class ExerciseType extends Model
 
     public function days(){
 
-        return $this->belongsToMany(Day::class, 'day_excersise_type');
+        return $this->belongsToMany(Day::class, 'day_excersise_types');
     }
 
 }

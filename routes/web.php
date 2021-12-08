@@ -21,7 +21,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/home', [Controllers\HomeController::class, 'index'])->name('home');
 
     Route::get('/timetables', [Controllers\TimetableController::class, 'getTimetables'])->name('timetables');
-    Route::post('/timetable/create', [Controllers\TimetableController::class, 'createTimetable'])->name('timetable.create');
+    Route::post('/timetable/create', [Controllers\TimetableController::class, 'storeTimetable'])->name('timetable.create');
+
+    Route::get('/timetable/{timetable}/edit', [Controllers\TimetableController::class, 'editTimetable'])->name('timetable.edit');
 
     Route::post('/sign-out', [Controllers\Auth\SessionController::class, 'destroy'])->name('auth.logout');
 });

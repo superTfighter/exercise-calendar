@@ -34,7 +34,9 @@
                                             <th scope="row">{{ $timetable->id }}</th>
                                             <td>{{ $timetable->name }}</td>
                                             <td>{{ $timetable->user->name }}</td>
-                                            <td>Edit/delete</td>
+                                            <td> <a class="btn btn-primary" href="{{ route('timetable.edit', $timetable) }}">
+                                                    Edit
+                                                </a>/delete</td>
                                         </tr>
                                     @endforeach
 

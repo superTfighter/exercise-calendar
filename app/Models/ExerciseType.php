@@ -11,13 +11,9 @@ class ExerciseType extends Model
 
     protected $fillable = ['name'];
 
-    public function exercises() {
-        return $this->hasMany(Exercise::class,'exercise_type_id');
-    }
-
     public function days(){
 
-        return $this->belongsToMany(Day::class, 'day_excersise_types');
+        return $this->belongsToMany(Day::class, 'day_excersise_type');
     }
 
 }

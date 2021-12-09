@@ -17,7 +17,6 @@ class TimetableController extends Controller
         return view('timetable.all')->with(compact('timetables'));
     }
 
-
     public function view(Timetable $timetable)
     {
         return view('timetable.view')->with(compact('timetable'));
@@ -25,30 +24,36 @@ class TimetableController extends Controller
 
     public function events(Timetable $timetable)
     {
-       //var_dump($timetable->days()->get());
+        
+        $events = array();
 
-       $events = array();
+        $TdayOfWeek = date('N');
+        foreach ($timetable->days()->get() as $day) {
+            $DdayOfWeek = array_search($day->dayofweek, Day::DayOfWeek) + 1;
 
-       $TdayOfWeek = date('N');
-       foreach($timetable->days()->get() as $day)
-       {
-           $DdayOfWeek = array_search($day->dayofweek,Day::DayOfWeek) + 1;
+            $difference = $DdayOfWeek - $TdayOfWeek;
 
-           $difference = $DdayOfWeek -$TdayOfWeek;
+            $date = date('Y-m-d', strtotime((string) $difference . ' days'));
 
-           $date = date('Y-m-d', strtotime((string)$difference . ' days'));
+            foreach ($day->exercise_types()->get() as $exercise_type) {
 
-          // foreach($)
+                $event = [
+                    'id' => uniqid(),
+                    'title' => $exercise_type->name,
+                    'start' => $date,
+                    'allDay' => true,
+                    'display' => 'list-item',
+                    'url' => route('exercise_type.random',$exercise_type)
+                ];
 
-           var_dump($date);
+                array_push($events, $event);
 
-         die();
-       }
-       
-       
-       die();
+            }
+
+        }
+
+        return $events;
     }
-
 
     public function store(TimetablePostRequest $request)
     {
@@ -63,7 +68,7 @@ class TimetableController extends Controller
 
     public function edit(Timetable $timetable)
     {
-        $days = Day::All();
+        $days = Day::where('timetable_id',null)->get();
 
         return view('timetable.edit')->with(compact('timetable', 'days'));
     }

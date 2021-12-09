@@ -23,6 +23,7 @@
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Name</th>
+                                        <th scope="col">In use</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
@@ -32,6 +33,13 @@
                                         <tr>
                                             <th scope="row">{{ $day->id }}</th>
                                             <td>{{ $day->dayofweek }}</td>
+                                            <td>
+                                                @if(!is_null($day->timetable))
+                                                    {{ $day->timetable->name}}  
+                                                @else Not in use 
+                                                    Not in use
+                                                @endif 
+                                            </td>
                                             <td> <a class="btn btn-primary" href="{{ route('day.edit', $day) }}">
                                                     Edit
                                                 </a>/delete</td>

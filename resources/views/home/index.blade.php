@@ -90,11 +90,11 @@
 
     </style>
 
-    <div class="row">
+    <div class="row" style="margin:50px">
 
-        <div class="md-6">
+        <div class="col-6 mt-10">
 
-            <div class="container mt-4 mb-4 p-3">
+            <div class="d-flex justify-content-center">
                 <div class="card p-4">
                     <div class=" image d-flex flex-column justify-content-center align-items-center"> <button
                             class="btn btn-secondary"> <img src="https://i.imgur.com/wvxPV9S.png" height="100"
@@ -118,6 +118,21 @@
             </div>
 
         </div>
+
+
+        <div class="col-6">
+
+            @foreach ($timetables as $timetable)
+
+            @include('timetable._view')
+                
+            @endforeach
+
+            
+
+
+        </div>
+
 
     </div>
 

@@ -40,6 +40,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/day/{day}/add', [Controllers\DayController::class, 'addExerciesTypeToDay'])->name('day.add.exercise_type');
 
+
+    Route::get('/exercise_type/{exercise_type}/getrandom', [Controllers\ExerciseTypeController::class, 'getRandomExercises'])->name('exercise_type.random');
     
 
 

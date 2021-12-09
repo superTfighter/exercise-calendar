@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Your Exercise calendar</title>
+    <title>Exercise calendar</title>
 
     <!-- CSS FILES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,8 +35,8 @@ https://templatemo.com/tm-567-nomad-force
     <main>
         <nav class="navbar navbar-expand-lg bg-light shadow-lg">
             <div class="container">
-                <a class="navbar-brand" href="index.html">
-                    <strong>Your Exercise calendar</strong>
+                <a class="navbar-brand" href="#">
+                    <strong>Exercise calendar</strong>
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"

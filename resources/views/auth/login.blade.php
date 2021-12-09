@@ -10,7 +10,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h4 class="display-4">
-                                {{ __('Sign in') }}
+                                Login
                             </h4>
                         </div>
                         <div class="card-body">

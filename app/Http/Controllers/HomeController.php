@@ -12,12 +12,7 @@ class HomeController extends Controller
 
     public function test()
     {
-        var_dump(Exercise::where('exercise_type_id', 1)->first());
-    
-        
-
-       
-      
+              
     }
 
     public function index()

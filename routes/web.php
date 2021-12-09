@@ -11,11 +11,11 @@ Route::get('/', function () {
 Route::get('/test', [Controllers\HomeController::class, 'test']);
 
 Route::middleware(['guest'])->group(function () {
-    Route::get('/sign-up', [Controllers\Auth\RegisterController::class, 'create'])->name('auth.register');
-    Route::post('/sign-up', [Controllers\Auth\RegisterController::class, 'store']);
+    Route::get('/register', [Controllers\Auth\RegisterController::class, 'create'])->name('auth.register');
+    Route::post('/register', [Controllers\Auth\RegisterController::class, 'store']);
 
-    Route::get('/sing-in', [Controllers\Auth\SessionController::class, 'create'])->name('auth.login');
-    Route::post('/sing-in', [Controllers\Auth\SessionController::class, 'store']);
+    Route::get('/login', [Controllers\Auth\SessionController::class, 'create'])->name('auth.login');
+    Route::post('/login', [Controllers\Auth\SessionController::class, 'store']);
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -42,10 +42,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/day/{day}/add', [Controllers\DayController::class, 'addExerciesTypeToDay'])->name('day.add.exercise_type');
 
-
     Route::get('/exercise_type/{exercise_type}/getrandom', [Controllers\ExerciseTypeController::class, 'getRandomExercises'])->name('exercise_type.random');
     
-
-
-    Route::post('/sign-out', [Controllers\Auth\SessionController::class, 'destroy'])->name('auth.logout');
+    Route::post('/logout', [Controllers\Auth\SessionController::class, 'destroy'])->name('auth.logout');
 });

@@ -42,6 +42,13 @@ class DayController extends Controller
     {
         $day->update($request->except('_token'));
 
+        return redirect()->route('day.edit',$day);
+    }
+
+    public function destroy(Day $day)
+    {
+        $day->delete();
+
         return redirect()->route('days');
     }
 
@@ -54,8 +61,7 @@ class DayController extends Controller
             ExerciseType::where('id', $exercise_type)->first()->days()->attach($day);
         }
 
-        return redirect()->route('days');
-
+        return redirect()->route('day.edit',$day);
     }
 
 }

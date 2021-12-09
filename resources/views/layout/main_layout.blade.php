@@ -35,7 +35,7 @@ https://templatemo.com/tm-567-nomad-force
     <main>
 
         @auth
-
+            <!-- SHOW NOTHING -->
         @else
 
 
@@ -47,16 +47,31 @@ https://templatemo.com/tm-567-nomad-force
                 </div>
 
                 <div class="videoWrapper">
-                    <video autoplay="" loop="" muted="" class="custom-video"
-                        poster="videos/792bd98f3e617786c850493560e11c45.jpg">
-                        <source src="videos/814dc43e870597176cad645798825c03.mp4" type="video/mp4">
-
+                    <video autoplay="" loop="" muted="" class="custom-video" src="" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </div>
 
                 <div class="overlay"></div>
             </section>
+
+            <script>
+
+            $(document).ready(function(){
+
+                function randomVideoSrc()
+                {
+                    var video = $('.custom-video').attr('src','videos/'+ (Math.floor(Math.random() * 3) + 1) +'.mp4');
+ 
+                    console.log(video);
+                }
+
+                randomVideoSrc();
+
+
+            });
+
+            </script>
 
         @endauth
 

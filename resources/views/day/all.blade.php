@@ -34,15 +34,29 @@
                                             <th scope="row">{{ $day->id }}</th>
                                             <td>{{ $day->dayofweek }}</td>
                                             <td>
-                                                @if(!is_null($day->timetable))
-                                                    {{ $day->timetable->name}}  
-                                                @else Not in use 
+                                                @if (!is_null($day->timetable))
+                                                    {{ $day->timetable->name }}
+                                                @else
                                                     Not in use
-                                                @endif 
+                                                @endif
                                             </td>
-                                            <td> <a class="btn btn-primary" href="{{ route('day.edit', $day) }}">
-                                                    Edit
-                                                </a>/delete</td>
+                                            <td>
+                                                <div class="btn-group" role="group">
+
+                                                    <a class="btn btn-primary" href="{{ route('day.edit', $day) }}">
+                                                        Edit
+                                                    </a>
+
+                                                    <form action="{{ route('day.delete', $day) }}" method="POST">
+                                                        @csrf
+                                                        <button class="btn btn-danger" type="submit">
+                                                            <i class="bi bi-trash"></i>
+                                                            Delete
+                                                        </button>
+                                                    </form>
+
+
+                                                </div>
                                         </tr>
                                     @endforeach
 
@@ -84,8 +98,8 @@
                                     <select name="dayofweek" class="form-select" aria-label="Default select example">
 
                                         <option selected>Please select one day</option>
-                                        
-                                        
+
+
                                         @foreach ($daysofweek as $dayofweek)
 
                                             <option value={{ $dayofweek }}>{{ $dayofweek }}</option>

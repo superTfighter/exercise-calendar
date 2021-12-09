@@ -30,6 +30,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/timetable/{timetable}/edit', [Controllers\TimetableController::class, 'edit'])->name('timetable.edit');
     Route::post('/timetable/{timetable}/edit', [Controllers\TimetableController::class, 'update']);
+    Route::post('/timetable/{timetable}/delete', [Controllers\TimetableController::class, 'destroy'])->name('timetable.delete');
     Route::post('/timetable/{timetable}/day/add', [Controllers\TimetableController::class, 'addDayToTimetable'])->name('timetable.add.day');
 
     Route::get('/days', [Controllers\DayController::class, 'getDays'])->name('days');
@@ -37,6 +38,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/day/{day}/edit', [Controllers\DayController::class, 'edit'])->name('day.edit');
     Route::post('/day/{day}/edit', [Controllers\DayController::class, 'update'])->name('day.edit');
+    Route::post('/day/{day}/delete', [Controllers\DayController::class, 'destroy'])->name('day.delete');
 
     Route::post('/day/{day}/add', [Controllers\DayController::class, 'addExerciesTypeToDay'])->name('day.add.exercise_type');
 

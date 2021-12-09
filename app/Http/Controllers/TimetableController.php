@@ -24,7 +24,7 @@ class TimetableController extends Controller
 
     public function events(Timetable $timetable)
     {
-        
+
         $events = array();
 
         $TdayOfWeek = date('N');
@@ -43,7 +43,7 @@ class TimetableController extends Controller
                     'start' => $date,
                     'allDay' => true,
                     'display' => 'list-item',
-                    'url' => route('exercise_type.random',$exercise_type)
+                    'url' => route('exercise_type.random', $exercise_type),
                 ];
 
                 array_push($events, $event);
@@ -68,7 +68,7 @@ class TimetableController extends Controller
 
     public function edit(Timetable $timetable)
     {
-        $days = Day::where('timetable_id',null)->get();
+        $days = Day::where('timetable_id', null)->get();
 
         return view('timetable.edit')->with(compact('timetable', 'days'));
     }
@@ -76,6 +76,21 @@ class TimetableController extends Controller
     public function update(TimetablePostRequest $request, Timetable $timetable)
     {
         $timetable->update($request->except('_token'));
+
+        return redirect()->route('timetable.edit',$timetable);
+    }
+
+    public function destroy(Timetable $timetable)
+    {
+        $days = $timetable->days()->get();
+
+        foreach ($days as $day) {
+            $up = ['timetable_id' => null];
+
+            $day->update($up);
+        }
+
+        $timetable->delete();
 
         return redirect()->route('timetables');
     }
@@ -90,7 +105,7 @@ class TimetableController extends Controller
             $day = Day::where('id', $day)->first()->timetable()->associate($timetable)->save();
         }
 
-        return redirect()->route('timetables');
+        return redirect()->route('timetable.edit',$timetable);
     }
 
 }

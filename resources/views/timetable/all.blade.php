@@ -36,17 +36,30 @@
                                             <td>{{ $timetable->user->name }}</td>
                                             <td>
 
-                                                <a class="btn btn-primary"
-                                                    href="{{ route('timetable.edit', $timetable) }}">
-                                                    Edit
-                                                </a>
+                                                <div class="btn-group" role="group">
 
-                                                <a class="btn btn-success"
-                                                    href="{{ route('timetable.view', $timetable) }}">
-                                                    View
-                                                </a>
+                                                    <a class="btn btn-primary btn-sm"
+                                                        href="{{ route('timetable.edit', $timetable) }}">
+                                                        Edit
+                                                    </a>
 
-                                                /delete
+                                                    <a class="btn btn-success btn-sm"
+                                                        href="{{ route('timetable.view', $timetable) }}">
+                                                        View
+                                                    </a>
+
+                                                    <form action="{{ route('timetable.delete', $timetable) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        <button class="btn btn-danger btn-sm" type="submit">
+                                                            <i class="bi bi-trash"></i>
+                                                            Delete
+                                                        </button>
+                                                    </form>
+
+                                                </div>
+
+
                                             </td>
                                         </tr>
                                     @endforeach

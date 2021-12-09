@@ -39,7 +39,7 @@
                 events: "{{ route('timetable.events', $timetable) }}",
                 eventDidMount: function(info) {
 
-                    $('.fc-button').css('display', 'none');
+                    $('.fc-header-toolbar').css('display', 'none');
                 },
             });
 

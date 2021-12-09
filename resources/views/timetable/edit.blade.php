@@ -2,6 +2,13 @@
 
 @section('content')
 
+    <style>
+        .row {
+            margin: 50px;
+        }
+
+    </style>
+
 
     <link href="{{ asset('css/multi-select.css') }}" media="screen" rel="stylesheet" type="text/css">
 
@@ -52,7 +59,7 @@
             <div class="card">
                 <div class="card-header text-center">
                     <h4>
-                       Days in this timetable
+                        Days in this timetable
                     </h4>
                     <div>
 
@@ -73,9 +80,26 @@
                                             <th scope="row">{{ $day->id }}</th>
                                             <td>{{ $day->dayofweek }}</td>
                                             <td>{{ $timetable->exercise_types }}</td>
-                                            <td> <a class="btn btn-primary" href="{{ route('day.edit', $day) }}">
-                                                Edit
-                                            </a>/delete</td>
+                                            <td>
+
+                                                <div class="btn-group" role="group">
+
+                                                    <a class="btn btn-primary" href="{{ route('day.edit', $day) }}">
+                                                        Edit
+                                                    </a>
+
+                                                    <form action="{{ route('day.delete', $day) }}" method="POST">
+                                                        @csrf
+                                                        <button class="btn btn-danger" type="submit">
+                                                            <i class="bi bi-trash"></i>
+                                                            Delete
+                                                        </button>
+                                                    </form>
+
+
+                                                </div>
+
+                                            </td>
                                         </tr>
                                     @endforeach
 
